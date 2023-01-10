@@ -1,0 +1,21 @@
+---
+hosts_entries:
+  - address: 127.0.0.1
+    names:
+      - localhost
+      - localhost.localdomain
+      - localhost4
+      - localhost4.localdomain4
+      - "{{ ansible_hostname }}"
+      - "{{ ansible_hostname }}.localdomain"
+  - address: "::1"
+    names:
+      - localhost
+      - localhost.localdomain
+      - localhost4
+      - localhost4.localdomain4
+      - "{{ ansible_hostname }}"
+      - "{{ ansible_hostname }}.localdomain"
+  - address: "172.17.0.1"
+    names:
+      - host.docker.internal

@@ -1,0 +1,16 @@
+---
+- name: Create directories
+  file:
+    path: /opt/twitarr
+    user: "{{ ansible_user_id }}"
+    group: "{{ ansible_user_id }}"
+    state: directory
+  become: yes
+
+- name: Install development dependencies
+  package:
+    name:
+      - libgd-dev
+      - libjpeg-dev
+    state: present
+  become: yes

@@ -1,0 +1,6 @@
+---
+- name: Install runtime
+  package:
+    name: swift-lang
+    state: latest
+  become: yes

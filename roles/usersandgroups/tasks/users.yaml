@@ -1,0 +1,10 @@
+---
+- name: Create users
+  user:
+    name: "{{ item.user }}"
+    append: yes
+    groups: "{{ item.groups }}"
+  become: yes
+  with_items:
+    - user: "{{ ansible_user_id }}"
+      groups: docker

@@ -1,0 +1,11 @@
+---
+- name: Configure user limits
+  copy:
+    dest: /usr/lib/systemd/user.conf.d/99-twitarr.conf
+    content: |
+      #
+      # Managed by Ansible
+      #
+      [Manager]
+      DefaultLimitNOFILE=10000:1048576
+  become: yes

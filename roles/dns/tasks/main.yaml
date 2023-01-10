@@ -1,0 +1,7 @@
+---
+- name: Configure hosts file entries
+  template:
+    src: hosts.j2
+    dest: /etc/hosts
+    backup: yes
+  become: yes

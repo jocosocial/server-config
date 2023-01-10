@@ -1,0 +1,15 @@
+---
+#
+# The JoCo Cruise Twitarr Server
+#
+- name: Server
+  hosts: all
+  roles:
+    - usersandgroups
+    - dns
+    - clitools
+    - ulimits
+    - logrotate
+    - docker
+    - swift
+    - twitarr

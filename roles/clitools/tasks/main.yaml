@@ -1,0 +1,22 @@
+---
+- name: Install misc tools
+  package:
+    name:
+      - ncdu          # TUI filesystem space viewer.
+      - net-tools     # ifconfig, etc.
+      - apache2-utils # htpasswd, htdigest, and other password generating tools.
+      - jq            # JSON parser
+      - git           # Version control
+      - openssl
+      - htop
+      - iftop
+      - nmap
+      - telnet
+      - iperf3
+      - jhead
+      - glances
+      - iotop
+      - tcpdump
+      - bind-utils
+    state: present
+  become: yes

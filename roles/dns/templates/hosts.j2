@@ -1,0 +1,6 @@
+#
+# Managed by Ansible
+#
+{% for entry in hosts_entries %}
+{{ entry.address }}    {{ entry.names | join(' ') }}
+{% endfor %}

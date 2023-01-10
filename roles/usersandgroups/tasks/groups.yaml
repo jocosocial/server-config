@@ -1,0 +1,8 @@
+---
+- name: Create groups
+  group:
+    name: "{{ item.name }}"
+    state: present
+  become: yes
+  with_items:
+    - name: docker
