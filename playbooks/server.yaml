@@ -6,6 +6,7 @@
   hosts: all
   roles:
     - usersandgroups
+    - sudo
     - dns
     - clitools
     - ulimits

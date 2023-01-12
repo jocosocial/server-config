@@ -1,0 +1,12 @@
+---
+- name: Set sudo config
+  copy:
+    dest: /etc/sudoers.d/01-custom
+    content: |
+      #
+      # Managed by Ansible
+      #
+      # Allow members of the group sudo to execute any command
+      # and do so without a password prompt.
+      %sudo  ALL=(ALL)   NOPASSWD: ALL
+  become: yes
