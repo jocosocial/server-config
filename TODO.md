@@ -7,6 +7,7 @@
 * sysctl
 * shell
 * tls
+* ntp/time
 
 Role Expansion
 * docker

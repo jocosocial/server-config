@@ -14,18 +14,18 @@ sudo apt install git ansible -y
 REPO=https://github.com/jocosocial/server-config
 REPO_DIR=/opt/server-config
 
-if [ -d ${REPO_DIR} && -w ${REPO_DIR} ]; then
+if [[ -d ${REPO_DIR} && -w ${REPO_DIR} ]]; then
     cd ${REPO_DIR}
     git pull
 else
-    sudo mkdir -p /opt/server-config
-    sudo -E chown ${USER}
+    sudo mkdir -p ${REPO_DIR}
+    sudo -E chown ${USER} ${REPO_DIR}
     git clone ${REPO} ${REPO_DIR}
     cd ${REPO_DIR}
 fi
 
-bash scripts/preflight-checks.sh
-#echo "Skipping preflight checks for WSL because I don't support them yet."
+#bash scripts/preflight-checks.sh
+echo "Skipping preflight checks because I don't support them yet."
 
 if [ $? != 0 ]; then
     echo "ERROR: You have some issues to address before you can build your system."

@@ -17,6 +17,6 @@
       - glances
       - iotop
       - tcpdump
-      - bind-utils
+      - bind9-dnsutils
     state: present
   become: yes
