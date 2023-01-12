@@ -1,0 +1,22 @@
+---
+- name: enable systemd-resolved
+  service:
+    name: systemd-resolved
+    state: started
+    enabled: true
+  become: yes
+
+- name: resolved configuration
+  ini_file:
+    path: /etc/systemd/resolved.conf
+    no_extra_spaces: true
+    section: Resolve
+    option: "{{ item.option }}"
+    value: "{{ item.value }}"
+  become: yes
+  notify: restart resolved
+  with_items:
+    - option: DNSSEC
+      value: false
+    - option: DNSStubListenerExtra
+      value: 172.17.0.1

@@ -1,0 +1,18 @@
+---
+- name: restart resolved
+  service:
+    name: systemd-resolved
+    state: restarted
+  become: yes
+
+- name: restart journald
+  service:
+    name: systemd-journald
+    state: restarted
+  become: yes
+
+- name: restart timesyncd
+  service:
+    name: systemd-timesyncd
+    state: restarted
+  become: yes

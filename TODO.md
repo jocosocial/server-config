@@ -2,12 +2,9 @@
 * Backups / Cron
 * ufw
 * ssh
-* sudo
-* systemd
 * sysctl
 * shell
 * tls
-* ntp/time
 * swift
 
 Role Expansion

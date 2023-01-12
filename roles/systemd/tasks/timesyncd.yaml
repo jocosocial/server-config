@@ -1,0 +1,22 @@
+---
+- name: enable systemd-timesyncd
+  service:
+    name: systemd-timesyncd
+    state: started
+    enabled: true
+  become: yes
+
+- name: timesyncd configuration
+  ini_file:
+    path: /etc/systemd/timesyncd.conf
+    no_extra_spaces: true
+    section: Time
+    option: "{{ item.option }}"
+    value: "{{ item.value }}"
+  become: yes
+  notify: restart timesyncd
+  with_items:
+    - option: NTP
+      value: "169.254.169.254"
+    - option: FallbackNTP
+      value: "ntp.ubuntu.com"

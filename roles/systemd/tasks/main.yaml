@@ -1,0 +1,9 @@
+---
+- name: load components
+  include_tasks: "{{ task_item }}.yaml"
+  with_items:
+    - resolved
+    - journald
+    - timesyncd
+  loop_control:
+    loop_var: task_item
