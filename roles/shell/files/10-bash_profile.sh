@@ -4,4 +4,4 @@
 #
 
 # Record timestamp of bash history commands.
-export HISTTIMEFORMAT='%d/%m/%y %T '
+export HISTTIMEFORMAT='%F %T '
