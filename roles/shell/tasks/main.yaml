@@ -1,0 +1,7 @@
+---
+- name: configure system bash
+  copy:
+    src: 10-bash_profile.sh
+    dest: /etc/profile.d/10-bash_profile.sh
+    mode: 0755
+  become: yes
