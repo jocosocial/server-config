@@ -11,5 +11,5 @@
     - ulimits
     - logrotate
     - docker
-    - swift
-    - twitarr
+    #- swift
+    #- twitarr

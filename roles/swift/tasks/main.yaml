@@ -1,6 +1,7 @@
 ---
-- name: Install runtime
-  package:
-    name: swift-lang
-    state: latest
-  become: yes
+#?- name: Install runtime
+#?  package:
+#?    name: swift-lang
+#?    state: latest
+#?  become: yes
+# There is no package for Swift.

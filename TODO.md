@@ -8,6 +8,7 @@
 * shell
 * tls
 * ntp/time
+* swift
 
 Role Expansion
 * docker

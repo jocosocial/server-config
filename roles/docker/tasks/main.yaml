@@ -16,7 +16,7 @@
 
 - name: Configure Docker daemon
   copy:
-    content: "{{ docker_daemon_config | to_json }}"
+    content: "{{ docker_daemon_config | to_nice_json }}"
     dest: /etc/docker/daemon.json
     backup: yes
   become: yes
