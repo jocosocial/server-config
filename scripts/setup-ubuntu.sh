@@ -19,7 +19,7 @@ if [ -d ${REPO_DIR} && -w ${REPO_DIR} ]; then
     git pull
 else
     sudo mkdir -p /opt/server-config
-    sudo chown ${USER}
+    sudo -E chown ${USER}
     git clone ${REPO} ${REPO_DIR}
     cd ${REPO_DIR}
 fi
