@@ -17,6 +17,4 @@
   notify: restart timesyncd
   with_items:
     - option: NTP
-      value: "169.254.169.254"
-    - option: FallbackNTP
-      value: "ntp.ubuntu.com"
+      value: "169.254.169.254 ntp.ubuntu.com"
