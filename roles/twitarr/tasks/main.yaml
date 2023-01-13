@@ -1,16 +1,28 @@
 ---
-- name: Create directories
+- name: create directories
   file:
-    path: /opt/twitarr
+    path: /opt/swiftarr
     user: "{{ ansible_user_id }}"
     group: "{{ ansible_user_id }}"
     state: directory
   become: yes
 
-- name: Install development dependencies
+- name: install development dependencies
   package:
     name:
       - libgd-dev
       - libjpeg-dev
     state: present
   become: yes
+
+- name: clone source
+  git:
+    repo: "https://github.com/jocosocial/swiftarr"
+    dest: /opt/swiftarr/src
+    version: master
+
+- name: clone deploy
+  git:
+    repo: "github.com:jocosocial/twitarr-prod"
+    dest: /opt/swiftarr/deploy
+    key_file: "/home/{{ ansible_user_id }}/.ssh/deploy"

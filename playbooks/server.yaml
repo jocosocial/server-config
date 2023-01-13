@@ -19,4 +19,4 @@
     - firewall
     - ssh
     - swift
-    #- twitarr
+    - twitarr
