@@ -17,6 +17,6 @@
   notify: restart resolved
   with_items:
     - option: DNSSEC
-      value: false
+      value: 'false'
     - option: DNSStubListenerExtra
       value: 172.17.0.1
