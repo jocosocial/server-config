@@ -6,4 +6,7 @@
     proto: tcp
   become: yes
   with_items:
-    - 80
+    - '80'
+    - '8080'
+    - '9100'
+    - '8081'
