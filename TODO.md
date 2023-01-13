@@ -2,9 +2,6 @@
 * Backups / Cron
 * ufw
 * ssh
-* sysctl
-* shell
-* tls
 * swift
 
 Role Expansion
