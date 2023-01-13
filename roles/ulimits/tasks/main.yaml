@@ -1,20 +1,10 @@
 ---
-- name: Create local user.d directory
-  file:
-    path: /etc/systemd/user.conf.d/
-    state: directory
-    owner: root
-    group: root
-    mode: 0755
-  become: yes
-
 - name: Configure user limits
   copy:
-    dest: /etc/systemd/user.conf.d/99-twitarr.conf
+    dest: /etc/security/limits.d/10-twitarr.conf
     content: |
       #
       # Managed by Ansible
       #
-      [Manager]
-      DefaultLimitNOFILE=10000:1048576
+      {{ ansible_user_id }} soft nofile 10000
   become: yes
