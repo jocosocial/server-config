@@ -2,7 +2,7 @@
 - name: create directories
   file:
     path: /opt/swiftarr
-    user: "{{ ansible_user_id }}"
+    owner: "{{ ansible_user_id }}"
     group: "{{ ansible_user_id }}"
     state: directory
   become: yes
