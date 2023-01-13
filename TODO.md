@@ -1,4 +1,2 @@
-* More dynamic way of logrotating traefik containers
 * Backups / Cron
-* ssh
-* swift
+* twitarr

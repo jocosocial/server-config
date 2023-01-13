@@ -15,5 +15,5 @@
     - docker
     - shell
     - firewall
-    #- swift
+    - swift
     #- twitarr

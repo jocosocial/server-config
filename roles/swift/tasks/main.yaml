@@ -1,7 +1,29 @@
 ---
-#?- name: Install runtime
-#?  package:
-#?    name: swift-lang
-#?    state: latest
-#?  become: yes
-# There is no package for Swift.
+# https://www.swiftlang.xyz/user-guide
+- name: install repo dependencies
+  package:
+    name:
+      - ca-certificates
+      - curl
+      - gnupg
+    state: present
+  become: yes
+
+- name: repository key
+  apt_key:
+    url: https://archive.swiftlang.xyz/swiftlang_repo.gpg.key
+    state: present
+  become: yes
+
+- name: repository
+  apt_repository:
+    repo: deb https://archive.swiftlang.xyz/ubuntu {{ ansible_distribution_release }} main
+    state: present
+  become: yes
+
+- name: install swift
+  package:
+    name: swiftlang
+    state: present
+  become: yes
+
