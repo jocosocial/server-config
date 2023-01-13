@@ -1,0 +1,9 @@
+---
+- name: allow ports
+  ufw:
+    rule: allow
+    port: "{{ item }}"
+    proto: tcp
+  become: yes
+  with_items:
+    - 80

@@ -14,5 +14,6 @@
     - logrotate
     - docker
     - shell
+    - firewall
     #- swift
     #- twitarr
