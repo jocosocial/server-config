@@ -2,6 +2,3 @@
 * Backups / Cron
 * ssh
 * swift
-
-Role Expansion
-* docker

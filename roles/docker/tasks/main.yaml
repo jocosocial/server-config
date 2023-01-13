@@ -1,20 +1,44 @@
 ---
-- name: Install Docker
+- name: install repo dependencies
   package:
     name:
-      - docker
-      - docker-compose
+      - ca-certificates
+      - curl
+      - gnupg
+      - lsb-release
     state: present
   become: yes
 
-- name: Create config directory
+- name: repository key
+  apt_key:
+    url: https://download.docker.com/linux/ubuntu/gpg
+    state: present
+  become: yes
+
+- name: repository
+  apt_repository:
+    repo: deb https://download.docker.com/linux/ubuntu
+    state: present
+  become: yes
+
+- name: install docker
+  package:
+    name:
+      - docker-ce
+      - docker-ce-cli
+      - containerd.io
+      - docker-compose-plugin
+    state: present
+  become: yes
+
+- name: create config directory
   file:
     path: /etc/docker
     state: directory
     mode: 0755
   become: yes
 
-- name: Configure Docker daemon
+- name: configure daemon
   copy:
     content: "{{ docker_daemon_config | to_nice_json }}"
     dest: /etc/docker/daemon.json
@@ -27,7 +51,7 @@
     name: logrotate
     tasks_from: docker
 
-- name: Enable service
+- name: enable service
   service:
     name: docker
     state: started

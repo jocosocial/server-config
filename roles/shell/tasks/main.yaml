@@ -13,3 +13,4 @@
   with_items:
     - tmux.conf
     - vimrc
+    - bash_aliases
