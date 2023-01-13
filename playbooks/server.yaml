@@ -4,6 +4,8 @@
 #
 - name: Server
   hosts: all
+  vars_files:
+    - ../vars/server.yaml
   roles:
     - usersandgroups
     - sudo
@@ -15,5 +17,6 @@
     - docker
     - shell
     - firewall
+    - ssh
     - swift
     #- twitarr
