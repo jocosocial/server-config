@@ -1,6 +1,13 @@
 ---
-- name: Install Logrotate
+- name: install Logrotate
   package:
     name: logrotate
     state: present
   become: yes
+
+- name: configure timer
+  copy:
+    src: logrotate.timer
+    dest: /etc/systemd/system/logrotate.timer
+  become: yes
+  notify: reload systemd

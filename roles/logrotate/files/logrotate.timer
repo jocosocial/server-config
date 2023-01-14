@@ -1,0 +1,14 @@
+#
+# Managed by Ansible
+#
+[Unit]
+Description=Rotation of log files
+Documentation=man:logrotate(8) man:logrotate.conf(5)
+
+[Timer]
+OnCalendar=hourly
+AccuracySec=1h
+Persistent=true
+
+[Install]
+WantedBy=timers.target
