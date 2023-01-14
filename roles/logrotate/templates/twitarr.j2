@@ -1,0 +1,25 @@
+#
+# Managed by Ansible
+#
+# WARNING: This will not delete any logs!
+{{ twitarr_logs_dir }}/twitarr.log {
+  compress
+  size 200M
+  missingok
+  sharedscripts
+  postrotate
+    /usr/bin/systemctl kill -s HUP rsyslog.service >/dev/null 2>&1 || true
+  endscript
+}
+
+# Estimated Total Size: 500MB + uncompressed active log file
+{{ twitarr_logs_dir }}/traefik.log {
+  rotate 5
+  compress
+  size 100M
+  missingok
+  sharedscripts
+  postrotate
+    /usr/bin/systemctl kill -s HUP rsyslog.service >/dev/null 2>&1 || true
+  endscript
+}

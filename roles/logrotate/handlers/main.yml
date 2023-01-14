@@ -1,0 +1,8 @@
+---
+# Logrotate is a oneshot service so a "restart" will be considered a one-time run,
+# then systemd will report it as "successful" or "running" even though it's done.
+- name: restart logrotate
+  service:
+    name: logrotate
+    state: restarted
+  become: yes

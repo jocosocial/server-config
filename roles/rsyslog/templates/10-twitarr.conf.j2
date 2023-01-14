@@ -3,6 +3,10 @@
 #
 # Log the Twitarr runtime logs to a consistent file.
 :programname, isequal, "twitarr" {{ twitarr_logs_dir }}/swiftarr.log
+# Stop further rule processing for logs that matched the filter above.
+& stop
 
+# Log the Traefik router logs to a consistent file.
+:programname, isequal, "traefik" {{ twitarr_logs_dir }}/traefik.log
 # Stop further rule processing for logs that matched the filter above.
 & stop

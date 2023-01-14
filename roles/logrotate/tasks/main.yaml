@@ -5,6 +5,7 @@
     state: present
   become: yes
 
+# This does not need to "restart" the timer. The daemon-reload will do that.
 - name: configure timer
   copy:
     src: logrotate.timer

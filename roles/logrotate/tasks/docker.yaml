@@ -1,6 +1,8 @@
 ---
-- name: Install Logrotate Docker configuration
+- name: install logrotate docker configuration
   copy:
-    src: docker.conf
+    src: docker
     dest: /etc/logrotate.d/docker
   become: yes
+  notify:
+    - restart logrotate
