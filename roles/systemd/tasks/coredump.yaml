@@ -1,0 +1,20 @@
+---
+- name: install systemd-coredump
+  package:
+    name: systemd-coredump
+    state: present
+  become: yes
+
+- name: coredump configuration
+  ini_file:
+    path: /etc/systemd/coredump.conf
+    no_extra_spaces: true
+    section: Coredump
+    option: "{{ item.key }}"
+    value: "{{ item.value }}"
+  become: yes
+  with_dict:
+    Storage: external
+    Compress: no
+    ProcessSizeMax: 4G
+    MaxUse: 8G

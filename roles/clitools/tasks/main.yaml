@@ -18,5 +18,6 @@
       - iotop
       - tcpdump
       - bind9-dnsutils
+      - lldb
     state: present
   become: yes
