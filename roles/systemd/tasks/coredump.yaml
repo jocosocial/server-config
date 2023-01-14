@@ -15,6 +15,6 @@
   become: yes
   with_dict:
     Storage: external
-    Compress: no
+    Compress: 'no'
     ProcessSizeMax: 4G
     MaxUse: 8G
