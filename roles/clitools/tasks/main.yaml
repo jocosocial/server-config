@@ -19,5 +19,6 @@
       - tcpdump
       - bind9-dnsutils
       - lldb
+      - acl
     state: present
   become: yes
