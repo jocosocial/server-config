@@ -19,3 +19,6 @@ hosts_entries:
   - address: "172.17.0.1"
     names:
       - host.docker.internal
+  - address: "{{ twitarr_private_ip }}"
+    names:
+      - joco.hollandamerica.com
