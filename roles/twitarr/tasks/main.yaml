@@ -20,6 +20,12 @@
   become: yes
   notify: restart rsyslog
 
+- name: link coredump directory
+  file:
+    src: /var/lib/systemd/coredump/
+    dest: "{{ twitarr_coredump_dir }}"
+    state: link
+
 - name: install development dependencies
   package:
     name:

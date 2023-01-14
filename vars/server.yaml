@@ -5,6 +5,7 @@ twitarr_logs_dir: "{{ twitarr_root_dir }}/logs"
 twitarr_src_dir: "{{ twitarr_root_dir }}/src"
 twitarr_deploy_dir: "{{ twitarr_root_dir }}/deploy"
 twitarr_backups_dir: "{{ twitarr_root_dir }}/backups"
+twitarr_coredump_dir: "{{ twitarr_root_dir }}/coredump"
 
 # Networking
 twitarr_public_ip: "10.26.129.135"
