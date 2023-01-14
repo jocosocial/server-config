@@ -10,3 +10,9 @@
     - '8080'
     - '9100'
     - '8081'
+
+# This clutters up dmesg
+- name: disable logging
+  ufw:
+    logging: 'off'
+  become: yes
