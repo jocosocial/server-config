@@ -6,6 +6,7 @@
   hosts: all
   vars_files:
     - ../vars/server.yaml
+    - ../vars/secret.yaml
   roles:
     - usersandgroups
     - sudo

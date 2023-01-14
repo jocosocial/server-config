@@ -1,11 +1,14 @@
 ---
 - name: create directories
   file:
-    path: /opt/swiftarr
+    path: "{{ item }}"
     owner: "{{ ansible_user_id }}"
     group: "{{ ansible_user_id }}"
     state: directory
   become: yes
+  with_items:
+    - "{{ twitarr_root_dir }}"
+    - "{{ twitarr_logs_dir }}"
 
 - name: install development dependencies
   package:
@@ -18,11 +21,11 @@
 - name: clone source
   git:
     repo: "https://github.com/jocosocial/swiftarr"
-    dest: /opt/swiftarr/src
+    dest: "{{ twitarr_src_dir }}"
     version: master
 
 - name: clone deploy
   git:
     repo: "github.com:jocosocial/twitarr-prod"
-    dest: /opt/swiftarr/deploy
+    dest: "{{ twitarr_deploy_dir }}"
     key_file: "/home/{{ ansible_user_id }}/.ssh/deploy"
