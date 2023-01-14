@@ -1,5 +1,5 @@
 #
 # Managed by Ansible
 #
-alias dc='docker-compose'
+alias dc='docker compose'
 alias d='docker'
