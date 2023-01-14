@@ -16,5 +16,5 @@
   with_dict:
     Storage: external
     Compress: 'no'
-    ProcessSizeMax: 4G
-    MaxUse: 8G
+    ProcessSizeMax: 1G
+    MaxUse: 4G
