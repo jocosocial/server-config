@@ -8,6 +8,7 @@
   become: yes
   with_items:
     - "{{ twitarr_root_dir }}"
+    - "{{ twitarr_backups_dir }}"
 
 - name: create log directory
   file:
