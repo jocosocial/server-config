@@ -8,7 +8,16 @@
   become: yes
   with_items:
     - "{{ twitarr_root_dir }}"
-    - "{{ twitarr_logs_dir }}"
+
+- name: create log directory
+  file:
+    path: "{{ twitarr_logs_dir }}"
+    owner: "{{ ansible_user_id }}"
+    group: adm
+    state: directory
+    mode: 0775
+  become: yes
+  notify: restart rsyslog
 
 - name: install development dependencies
   package:
