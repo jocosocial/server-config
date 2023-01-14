@@ -1,5 +1,5 @@
 ---
 twitarr_root_dir: /opt/swiftarr
-twitarr_logs_dir: "{{ twitarr_root }}/logs"
-twitarr_src_dir: "{{ twitarr_root }}/src"
-twitarr_deploy_dir: "{{ twitarr_root }}/deploy"
+twitarr_logs_dir: "{{ twitarr_root_dir }}/logs"
+twitarr_src_dir: "{{ twitarr_root_dir }}/src"
+twitarr_deploy_dir: "{{ twitarr_root_dir }}/deploy"
