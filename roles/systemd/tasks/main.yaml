@@ -8,3 +8,6 @@
     - coredump
   loop_control:
     loop_var: task_item
+
+- name: flush handlers
+  meta: flush_handlers
