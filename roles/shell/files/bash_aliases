@@ -3,3 +3,5 @@
 #
 alias dc='docker compose'
 alias d='docker'
+alias gs='git status'
+alias gpl='git pull'
