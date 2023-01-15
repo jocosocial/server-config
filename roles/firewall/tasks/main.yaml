@@ -21,7 +21,7 @@
 - name: allow dns for systemd-resolved
   ufw:
     rule: allow
-    port: 53
+    port: '53'
     proto: udp
     src: 172.17.0.0/16
   become: yes
