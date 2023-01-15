@@ -45,3 +45,17 @@
     repo: "github.com:jocosocial/twitarr-prod"
     dest: "{{ twitarr_deploy_dir }}"
     key_file: "/home/{{ ansible_user_id }}/.ssh/deploy"
+
+- name: configure source repo
+  ini_file:
+    path: "{{ twitarr_src_dir }}/.git/config"
+    section: receive
+    option: denyCurrentBranch
+    value: updateInstead
+
+- name: configure deploy repo
+  ini_file:
+    path: "{{ twitarr_deploy_dir }}/.git/config"
+    section: receive
+    option: denyCurrentBranch
+    value: updateInstead
