@@ -16,6 +16,7 @@
   ufw:
     state: enabled
     policy: deny
+  become: yes
 
 # This clutters up dmesg
 - name: disable logging
