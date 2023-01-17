@@ -11,6 +11,7 @@
     - "{{ twitarr_backups_dir }}"
     - "{{ twitarr_backups_dir }}/images"
     - "{{ twitarr_backups_dir }}/database"
+    - "{{ twitarr_backups_dir }}/buildcache"
 
 - name: create log directory
   file:
