@@ -1,6 +1,7 @@
 #
 # Managed by Ansible
 #
+alias docker-compose='docker compose'
 alias dc='docker compose'
 alias d='docker'
 alias gs='git status'
