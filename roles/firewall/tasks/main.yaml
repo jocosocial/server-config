@@ -6,10 +6,16 @@
     proto: tcp
   become: yes
   with_items:
+    - '22'
     - '80'
     - '8080'
     - '9100'
     - '8081'
+
+- name: enable firewall
+  ufw:
+    state: enabled
+    policy: deny
 
 # This clutters up dmesg
 - name: disable logging
