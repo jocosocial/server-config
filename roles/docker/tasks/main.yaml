@@ -63,3 +63,10 @@
     state: started
     enabled: yes
   become: yes
+
+- name: configure legacy plugin access
+  file:
+    src: /usr/libexec/docker/cli-plugins/docker-compose
+    dest: /usr/local/bin/docker-compose
+    state: link
+  become: yes
