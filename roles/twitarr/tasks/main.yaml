@@ -61,3 +61,9 @@
     section: receive
     option: denyCurrentBranch
     value: updateInstead
+
+- name: link production config for builds
+  file:
+    src: "{{ twitarr_deploy_dir }}/production.env"
+    dest: "{{ twitarr_src_dir }}/Sources/App/seeds/Private Swiftarr Config/production.env"
+    state: link
