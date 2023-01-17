@@ -1,4 +1,10 @@
 ---
+- name: purge snap
+  snap:
+    name: docker
+    state: absent
+  become: yes
+
 - name: install repo dependencies
   package:
     name:
