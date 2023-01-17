@@ -67,3 +67,8 @@
     src: "{{ twitarr_deploy_dir }}/production.env"
     dest: "{{ twitarr_src_dir }}/Sources/App/seeds/Private Swiftarr Config/production.env"
     state: link
+
+- name: create volumes
+  docker_volume:
+    name: images
+    state: present
