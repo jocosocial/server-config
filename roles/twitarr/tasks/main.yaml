@@ -23,6 +23,10 @@
   become: yes
   notify: restart rsyslog
 
+- import_role:
+    name: logrotate
+    tasks_from: twitarr
+
 - name: link coredump directory
   file:
     src: /var/lib/systemd/coredump/

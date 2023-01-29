@@ -1,8 +1,8 @@
 ---
 - name: install twitarr logrotate configuration
   template:
-    src: "{{ item }}.j2"
-    dest: "/etc/logrotate.d/{{ item }}"
+    src: "twitarr.j2"
+    dest: "/etc/logrotate.d/twitarr"
   become: yes
   notify:
     - restart logrotate
