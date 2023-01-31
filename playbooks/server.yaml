@@ -12,6 +12,7 @@
     - sudo
     - dns
     - systemd
+    - python
     - clitools
     - ulimits
     - rsyslog
