@@ -17,4 +17,4 @@
     Storage: external
     Compress: 'no'
     ProcessSizeMax: 1G
-    MaxUse: 4G
+    MaxUse: 12G
