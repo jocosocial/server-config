@@ -1,4 +1,10 @@
 ---
+- name: install rsyslog
+  package:
+    name: rsyslog
+    state: present
+  become: yes
+
 - name: enable rsyslog
   service:
     name: rsyslog
