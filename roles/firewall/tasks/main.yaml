@@ -1,4 +1,10 @@
 ---
+- name: install firewall
+  package:
+    name: ufw
+    state: present
+  become: yes
+
 - name: allow ports
   ufw:
     rule: allow
