@@ -12,11 +12,10 @@
   endscript
 }
 
-# Estimated Total Size: 500MB + uncompressed active log file
+# WARNING: This will not delete any logs!
 {{ twitarr_logs_dir }}/traefik.log {
-  rotate 5
   compress
-  size 100M
+  size 200M
   missingok
   sharedscripts
   postrotate
