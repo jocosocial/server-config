@@ -20,5 +20,6 @@
       - bind9-dnsutils
       - lldb
       - acl
+      - vim
     state: present
   become: yes
