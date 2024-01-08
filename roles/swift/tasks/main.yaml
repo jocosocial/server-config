@@ -11,7 +11,7 @@
 
 - name: repository key
   apt_key:
-    url: https://archive.swiftlang.xyz/swiftlang_repo.gpg.key
+    url: https://packagecloud.io/swift-arm/release/gpgkey
     state: present
   become: yes
 
