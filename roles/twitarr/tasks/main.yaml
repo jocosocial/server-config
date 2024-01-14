@@ -87,3 +87,7 @@
     - images
     - pgdata
     - redisdata
+    - prometheus
+    - alertmanager
+    - grafana
+    - senddata
