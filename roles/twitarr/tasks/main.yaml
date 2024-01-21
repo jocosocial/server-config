@@ -91,3 +91,18 @@
     - alertmanager
     - grafana
     - senddata
+
+# Ensure these are up to date with swiftarr's Dockerfile
+- name: pull build images
+  docker_image:
+    source: pull
+    repository: "{{ item.repo }}"
+    name: "{{ item.name }}"
+    tag: "{{ item.tag }}"
+  with_items:
+    - repo: docker.io/library
+      name: swift
+      tag: 5.8-jammy
+    - repo: docker.io/library
+      name: ubuntu
+      tag: 22.04
