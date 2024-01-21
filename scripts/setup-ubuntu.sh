@@ -5,7 +5,9 @@
 # Simple prereqs
 sudo apt update
 sudo apt upgrade -y
-sudo apt install git ansible -y
+sudo apt install git -y
+# https://github.com/jocosocial/twitarr-prod/issues/50
+sudo pip3 install ansible -y
 
 # Purge crap that gets in our way
 # None yet
