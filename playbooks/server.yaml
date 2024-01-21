@@ -8,6 +8,7 @@
     - ../vars/server.yaml
     - ../vars/secret.yaml
   roles:
+    - filesystem
     - usersandgroups
     - sudo
     - dns
