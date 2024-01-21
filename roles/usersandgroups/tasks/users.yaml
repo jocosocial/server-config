@@ -8,3 +8,6 @@
   with_items:
     - user: "{{ ansible_user_id }}"
       groups: docker,sudo
+
+- name: Reset to enable new groups
+  meta: reset_connection
