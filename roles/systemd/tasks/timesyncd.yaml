@@ -17,4 +17,4 @@
   notify: restart timesyncd
   with_items:
     - option: NTP
-      value: "169.254.169.254 ntp.ubuntu.com"
+      value: "{{ ntp_server }} ntp.ubuntu.com"
