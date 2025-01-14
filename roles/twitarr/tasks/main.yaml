@@ -46,7 +46,7 @@
   git:
     repo: "https://github.com/jocosocial/microkaraoke_songs"
     dest: "{{ twitarr_microkaraoke_dir }}"
-    version: master
+    version: main
 
 - name: clone source
   git:

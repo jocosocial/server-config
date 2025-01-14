@@ -5,9 +5,9 @@
 # Simple prereqs
 sudo apt update
 sudo apt upgrade -y
-sudo apt install git -y
+sudo apt install git python3-pip -y
 # https://github.com/jocosocial/twitarr-prod/issues/50
-sudo pip3 install ansible -y
+sudo pip3 install ansible
 
 # Purge crap that gets in our way
 # None yet
