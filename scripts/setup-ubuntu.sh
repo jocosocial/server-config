@@ -5,7 +5,7 @@
 # Simple prereqs
 sudo apt update
 sudo apt upgrade -y
-sudo apt install git python3-pip -y
+sudo apt install git python3-pip sshpass -y
 # https://github.com/jocosocial/twitarr-prod/issues/50
 sudo pip3 install ansible
 
@@ -38,6 +38,6 @@ else
     echo "SUCCESS: You're all set!"
     echo ""
     echo "The workstation repo is at ${REPO_DIR}. An example run would be:"
-    echo "  ansible-playbook -K --ask-vault-pass -l localhost playbooks/server.yaml"
+    echo "  ansible-playbook -kK --ask-vault-pass -l localhost playbooks/server.yaml"
     echo ""
 fi
