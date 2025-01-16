@@ -29,6 +29,9 @@ fi
 #bash scripts/preflight-checks.sh
 echo "Skipping preflight checks because I don't support them yet."
 
+# Add localhost to known hosts
+ssh-keyscan -H localhost >> ~/.ssh/known_hosts
+
 if [ $? != 0 ]; then
     echo "ERROR: You have some issues to address before you can build your system."
     echo "       See the results of the pre-flight tests above to help in"
