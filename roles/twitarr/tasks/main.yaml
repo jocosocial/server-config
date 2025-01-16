@@ -13,6 +13,7 @@
     - "{{ twitarr_backups_dir }}/database"
     - "{{ twitarr_backups_dir }}/buildcache"
     - "{{ twitarr_backups_dir }}/redis"
+    - "{{ twitarr_backups_dir }}/prometheus"
 
 - name: create log directory
   file:
