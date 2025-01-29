@@ -23,6 +23,7 @@
     - { regexp: '^UsePrivilegeSeparation', line: 'UsePrivilegeSeparation sandbox' }
     - { regexp: '^X11Forwarding', line: 'X11Forwarding  yes' }
     - { regexp: '^PermitRootLogin', line: 'PermitRootLogin no' }
+    - { regexp: '^UseDNS', line: 'UseDNS no' }
   notify:
     - restart sshd
 
