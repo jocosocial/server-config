@@ -75,6 +75,13 @@
     option: denyCurrentBranch
     value: updateInstead
 
+- name: configure microkaraoke repo
+  ini_file:
+    path: "{{ twitarr_microkaraoke_dir }}/.git/config"
+    section: receive
+    option: denyCurrentBranch
+    value: updateInstead
+
 - name: link production config for builds
   file:
     src: "{{ twitarr_deploy_dir }}/production.env"
