@@ -1,0 +1,16 @@
+#
+# This is the template Twitarr netplan for configuring
+# a static IP on this machine.
+#
+# Uncomment the block below and edit as appropriate.
+# You must uncomment the entire block for the configuration
+# to be successful.
+#
+#network:
+#  version: 2
+#  ethernets:
+#    {{ ansible_default_ipv4.interface }}:
+#      dhcp4: no
+#      addresses:
+#        - {{ server_address }}/{{ server_netmask }}
+#      gateway4: {{ server_gateway }}
