@@ -1,0 +1,7 @@
+---
+- name: Disable printing to console
+  sysctl:
+    name: kernel.printk
+    value: "1 4 1 7"
+    sysctl_file: /etc/sysctl/10-console-messages.conf
+  become: yes
