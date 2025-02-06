@@ -13,4 +13,6 @@
 #      dhcp4: no
 #      addresses:
 #        - {{ server_address }}/{{ server_netmask }}
-#      gateway4: {{ server_gateway }}
+#      routes:
+#        - to: default
+#          via: {{ server_gateway }}
