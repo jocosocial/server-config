@@ -3,6 +3,6 @@
   template:
     src: 00-twitarr.yaml
     dest: '/etc/netplan/00-twitarr.yaml'
-    mode: 0644
+    mode: 0600
     force: no
   become: yes
