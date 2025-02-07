@@ -1,0 +1,19 @@
+---
+- name: Remove crap scripts
+  file:
+    path: "/etc/update-motd.d/{{ item }}"
+    state: absent
+  become: yes
+  with_items:
+    - 10-help-text
+    - 50-motd-news
+    - 90-updates-available
+    - 91-contract-ua-esm-status
+    - 91-release-upgrade
+    - 92-unattended-upgrades
+
+- name: Install custom
+  copy:
+    src: twitarr-motd.txt
+    dest: /etc/motd
+  become: yes
