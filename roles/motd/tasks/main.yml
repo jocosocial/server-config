@@ -12,6 +12,7 @@
     - 91-release-upgrade
     - 92-unattended-upgrades
 
+# Generated from https://patorjk.com/software/taag/#p=display&f=Slant&t=Twit-arr
 - name: Install custom
   copy:
     src: twitarr-motd.txt
