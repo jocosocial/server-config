@@ -1,0 +1,6 @@
+---
+- name: Disable automatic updates
+  copy:
+    src: 20auto-upgrades
+    dest: /etc/apt/apt.conf.d/20auto-upgrades
+  become: yes

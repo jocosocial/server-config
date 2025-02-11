@@ -8,6 +8,7 @@
     - ../vars/server.yaml
     - ../vars/secret.yaml
   roles:
+    - apt
     - motd
     - filesystem
     - usersandgroups
