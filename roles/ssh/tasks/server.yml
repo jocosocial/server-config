@@ -41,7 +41,7 @@
 
 - name: Configure SSHD Service
   service:
-    name: sshd
+    name: ssh
     state: started
     enabled: true
   become: yes

@@ -5,7 +5,7 @@ All the things needed to make the Twitarr production server.
 
 Prerequisites
 -------------
-* Ubuntu 24.04 Server
+* Ubuntu 24.04 Server, unminimized
 
 Installation
 ------------
