@@ -24,10 +24,6 @@ else
     cd ${REPO_DIR}
 fi
 
-# Install required Ansible collections for this repo
-ANSIBLE_COLLECTIONS_PATH=${REPO_DIR}/collections \
-    ansible-galaxy collection install -r requirements.yml
-
 #bash scripts/preflight-checks.sh
 echo "Skipping preflight checks because I don't support them yet."
 

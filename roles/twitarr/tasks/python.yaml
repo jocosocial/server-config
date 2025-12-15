@@ -1,7 +1,7 @@
 - name: create swiftarr python virtualenv
-  community.general.python_venv:
-    path: /opt/swiftarr/venv
-    python: python3
+  command: python3 -m venv /opt/swiftarr/venv
+  args:
+    creates: /opt/swiftarr/venv/bin/activate
   become: yes
 
 - name: install python dependencies into swiftarr venv
