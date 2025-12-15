@@ -16,6 +16,7 @@
     - dns
     - systemd
     - python
+    - swift
     - clitools
     - ulimits
     - sysctl

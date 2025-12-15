@@ -1,0 +1,45 @@
+---
+- name: install swift dependencies
+  package:
+    name:
+      - curl
+      - libcurl4
+      - libxml2
+    state: present
+  become: yes
+
+- name: create swift installation directory
+  file:
+    path: /opt/swift
+    state: directory
+    mode: 0755
+  become: yes
+
+- name: download swift 6.2.0
+  get_url:
+    url: https://download.swift.org/swift-6.2.0-release/ubuntu2404/swift-6.2.0-RELEASE/swift-6.2.0-RELEASE-ubuntu24.04.tar.gz
+    dest: /tmp/swift-6.2.0-RELEASE-ubuntu24.04.tar.gz
+    mode: 0644
+  become: yes
+
+- name: extract swift
+  unarchive:
+    src: /tmp/swift-6.2.0-RELEASE-ubuntu24.04.tar.gz
+    dest: /opt/swift
+    remote_src: yes
+    creates: /opt/swift/swift-6.2.0-RELEASE-ubuntu24.04
+  become: yes
+
+- name: create swift symlink
+  file:
+    src: /opt/swift/swift-6.2.0-RELEASE-ubuntu24.04/usr/bin/swift
+    dest: /usr/local/bin/swift
+    state: link
+  become: yes
+
+- name: create swiftc symlink
+  file:
+    src: /opt/swift/swift-6.2.0-RELEASE-ubuntu24.04/usr/bin/swiftc
+    dest: /usr/local/bin/swiftc
+    state: link
+  become: yes
