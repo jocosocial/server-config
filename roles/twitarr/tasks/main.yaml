@@ -88,10 +88,8 @@
     dest: "{{ twitarr_src_dir }}/Sources/swiftarr/seeds/Private Swiftarr Config/production.env"
     state: link
 
-- name: install python dependencies
-  pip:
-    requirements: "{{ twitarr_src_dir }}/requirements.txt"
-  become: yes
+- name: setup python environment for swiftarr
+  import_tasks: python.yaml
 
 - name: create volumes
   docker_volume:

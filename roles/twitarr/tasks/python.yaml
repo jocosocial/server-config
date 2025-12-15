@@ -1,0 +1,12 @@
+- name: create swiftarr python virtualenv
+  python_venv:
+    path: /opt/swiftarr/venv
+    python: python3
+  become: yes
+
+- name: install python dependencies into swiftarr venv
+  pip:
+    requirements: "{{ twitarr_src_dir }}/requirements.txt"
+    virtualenv: /opt/swiftarr/venv
+    virtualenv_python: python3
+  become: yes
