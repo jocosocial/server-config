@@ -1,5 +1,5 @@
 - name: create swiftarr python virtualenv
-  python_venv:
+  community.general.python_venv:
     path: /opt/swiftarr/venv
     python: python3
   become: yes
