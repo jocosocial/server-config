@@ -9,15 +9,9 @@ Prerequisites
 
 Installation
 ------------
-01. Install some prereqs:
-    ```
-    sudo apt update
-    sudo apt install -y git ansible
-    ```
+01. Setup with `curl -sL https://grntm.co/twitup | bash`
 
-02. Clone this repo onto the server and `cd` to it.
-
-03. From the root of this repo:
+02. From the root of this repo:
     ```
     ansible-playbook playbooks/server.yaml
     ```
