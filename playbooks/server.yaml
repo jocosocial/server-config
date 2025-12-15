@@ -26,6 +26,4 @@
     - firewall
     - ssh
     - network
-    # Disabling since the package repo doesnt have 5.8[.0], only 5.8.1.
-    #- swift
     - twitarr
