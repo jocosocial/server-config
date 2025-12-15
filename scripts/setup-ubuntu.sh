@@ -25,7 +25,7 @@ else
 fi
 
 # Install required Ansible collections for this repo
-ANSIBLE_COLLECTIONS_PATHS=${REPO_DIR}/collections \
+ANSIBLE_COLLECTIONS_PATH=${REPO_DIR}/collections \
     ansible-galaxy collection install -r requirements.yml
 
 #bash scripts/preflight-checks.sh
