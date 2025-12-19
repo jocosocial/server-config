@@ -4,7 +4,7 @@
 # WARNING: This will not delete any logs!
 {{ twitarr_logs_dir }}/swiftarr.log {
   compress
-  daily
+  size 100M
   missingok
   sharedscripts
   postrotate
@@ -15,7 +15,7 @@
 # WARNING: This will not delete any logs!
 {{ twitarr_logs_dir }}/traefik.log {
   compress
-  daily
+  size 100M
   missingok
   sharedscripts
   postrotate
