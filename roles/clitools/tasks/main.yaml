@@ -22,5 +22,6 @@
       - acl
       - vim
       - apt-file      # Apt search
+      - unzip
     state: present
   become: yes
