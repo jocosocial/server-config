@@ -17,17 +17,17 @@
 
 - name: download swift {{ swift_version }}
   get_url:
-    url: https://download.swift.org/swift-{{ swift_version }}-release/{{ swift_ubuntu_version }}/swift-{{ swift_version }}-RELEASE/swift-{{ swift_version }}-RELEASE-{{ swift_ubuntu_version }}.tar.gz
-    dest: /tmp/swift-{{ swift_version }}-RELEASE-{{ swift_ubuntu_version }}.tar.gz
+    url: https://download.swift.org/swift-{{ swift_version }}-release/ubuntu2404/swift-{{ swift_version }}-RELEASE/swift-{{ swift_version }}-RELEASE-ubuntu24.04.tar.gz
+    dest: /tmp/swift-{{ swift_version }}-RELEASE-ubuntu24.04.tar.gz
     mode: 0644
   become: yes
 
 - name: extract swift
   unarchive:
-    src: /tmp/swift-{{ swift_version }}-RELEASE-{{ swift_ubuntu_version }}.tar.gz
+    src: /tmp/swift-{{ swift_version }}-RELEASE-ubuntu24.04.tar.gz
     dest: "{{ swift_install_path }}"
     remote_src: yes
-    creates: "{{ swift_install_path }}/swift-{{ swift_version }}-RELEASE-{{ swift_ubuntu_version }}"
+    creates: "{{ swift_install_path }}/swift-{{ swift_version }}-RELEASE-ubuntu24.04"
   become: yes
 
 - name: Configure Swift PATH in profile.d
