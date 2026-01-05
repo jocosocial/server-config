@@ -4,7 +4,7 @@
     user: "{{ ansible_user_id }}"
     key: "{{ item }}"
   with_items:
-    - "{{ ssh_authorized_keys}}"
+    - "{{ ssh_authorized_keys }}"
 
 - name: test for existing ssh key
   stat:
