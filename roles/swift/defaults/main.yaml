@@ -1,0 +1,5 @@
+---
+swift_install_path: /usr/local/swift
+swift_version: "6.2"
+swift_ubuntu_version: "ubuntu24.04"
+
