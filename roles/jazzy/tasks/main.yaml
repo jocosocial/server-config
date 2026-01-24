@@ -1,0 +1,14 @@
+---
+- name: Install Ruby packages
+  package:
+    name:
+      - ruby-rubygems
+      - ruby-dev
+    state: present
+  become: yes
+
+- name: Install jazzy gem
+  gem:
+    name: jazzy
+    state: present
+  become: yes

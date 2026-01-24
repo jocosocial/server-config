@@ -1,0 +1,21 @@
+---
+- name: clone SourceKitten repository
+  git:
+    repo: https://github.com/jpsim/SourceKitten
+    dest: /opt/SourceKitten
+    version: 0.37.2
+  become: yes
+
+- name: build SourceKitten
+  command: swift build -c release
+  args:
+    chdir: /opt/SourceKitten
+    creates: /opt/SourceKitten/.build/release/sourcekitten
+  become: yes
+
+- name: create sourcekitten symlink
+  file:
+    src: /opt/SourceKitten/.build/release/sourcekitten
+    dest: /usr/local/bin/sourcekitten
+    state: link
+  become: yes

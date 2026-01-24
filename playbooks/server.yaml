@@ -17,6 +17,8 @@
     - systemd
     - python
     - swift
+    - sourcekitten
+    - jazzy
     - clitools
     - ulimits
     - sysctl
