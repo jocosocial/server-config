@@ -22,6 +22,7 @@
       - acl
       - vim
       - apt-file      # Apt search
-      - unzip
+      - unzip         # Archive extractor
+      - tmux          # Terminal multiplexer
     state: present
   become: yes
