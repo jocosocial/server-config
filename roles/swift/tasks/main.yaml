@@ -36,3 +36,13 @@
     dest: /etc/profile.d/swift.sh
     mode: 0644
   become: yes
+
+- name: Symlink swift and swiftc to /usr/local/bin
+  file:
+    src: "{{ swift_bin_path }}/{{ item }}"
+    dest: "/usr/local/bin/{{ item }}"
+    state: link
+  loop:
+    - swift
+    - swiftc
+  become: yes
