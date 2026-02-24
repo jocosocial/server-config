@@ -21,8 +21,9 @@
       - lldb
       - acl
       - vim
-      - apt-file      # Apt search
-      - unzip         # Archive extractor
-      - tmux          # Terminal multiplexer
+      - apt-file       # Apt search
+      - unzip          # Archive extractor
+      - tmux           # Terminal multiplexer
+      - apparmor-utils # AppArmor utilities
     state: present
   become: yes
