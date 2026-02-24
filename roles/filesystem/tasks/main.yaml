@@ -1,7 +1,8 @@
 ---
+# @TODO this used to recurse: yes but that would mess with log files.
+# During initial build we may need to find a different solution.
 - name: change opt ownership
   file:
     path: /opt
-    recurse: true
     owner: "{{ ansible_user_id }}"
   become: yes
