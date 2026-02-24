@@ -5,6 +5,13 @@
     state: present
   become: yes
 
+- name: custom rsyslog config
+  template:
+    src: apparmor.j2
+    dest: /etc/apparmor.d/rsyslog.d/10-twitarr
+  become: yes
+  notify: reload rsyslog apparmor
+
 - name: enable rsyslog
   service:
     name: rsyslog

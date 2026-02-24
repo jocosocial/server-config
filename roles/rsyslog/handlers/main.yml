@@ -4,3 +4,8 @@
     name: rsyslog
     state: restarted
   become: yes
+
+- name: reload rsyslog apparmor
+  shell:
+    cmd: apparmor_parser -r /etc/apparmor.d/usr.sbin.rsyslogd
+  become: yes
