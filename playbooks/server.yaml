@@ -20,6 +20,7 @@
     - sourcekitten
     - jazzy
     - clitools
+    - perftest
     - ulimits
     - sysctl
     - rsyslog

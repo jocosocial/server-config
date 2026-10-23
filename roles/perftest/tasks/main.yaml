@@ -1,0 +1,11 @@
+---
+- name: Install performance testing tools
+  package:
+    name:
+      - stress-ng    # CPU, memory, and I/O stress tester.
+      - fio          # Flexible disk I/O benchmark.
+      - memtester    # Userspace memory tester.
+      - lm-sensors   # Hardware temperature and fan sensors.
+      - smartmontools # SMART disk health monitoring.
+    state: present
+  become: yes
