@@ -4,6 +4,9 @@
 
 # Simple prereqs
 sudo apt update
+# Install keyboard-configuration first, non-interactively, to avoid
+# its debconf prompt mangling the terminal during later installs.
+sudo DEBIAN_FRONTEND=noninteractive apt-get install -y keyboard-configuration
 sudo apt upgrade -y
 sudo apt install git ansible sshpass -y
 
