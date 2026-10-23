@@ -114,7 +114,7 @@
   with_items:
     - repo: docker.io/library
       name: swift
-      tag: 6.2-noble
+      tag: 6.4-noble
     - repo: docker.io/library
       name: ubuntu
       tag: 24.04

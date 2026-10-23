@@ -1,4 +1,8 @@
-# Swift PATH configuration
+# Swift (swiftly) environment configuration
 # Managed by Ansible
-export PATH="{{ swift_bin_path }}:$PATH"
-
+export SWIFTLY_HOME_DIR="{{ swiftly_home_dir }}"
+export SWIFTLY_BIN_DIR="{{ swiftly_bin_dir }}"
+case ":$PATH:" in
+  *":$SWIFTLY_BIN_DIR:"*) ;;
+  *) export PATH="$SWIFTLY_BIN_DIR:$PATH" ;;
+esac

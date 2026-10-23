@@ -1,45 +1,109 @@
 ---
-- name: install swift dependencies
+# swiftly refuses to run without gpg (signature verification) and warns
+# without CA certs; toolchain deps come from its post-install script below
+- name: install swiftly dependencies
   package:
     name:
-      - curl
-      - libcurl4
-      - libxml2
+      - ca-certificates
+      - gpg
     state: present
   become: yes
 
-- name: create swift installation directory
-  file:
-    path: "{{ swift_install_path }}"
-    state: directory
-    mode: 0755
+- name: check for existing swiftly install
+  stat:
+    path: "{{ swiftly_bin_dir }}/swiftly"
+  register: swiftly_bin
+
+- name: bootstrap swiftly
+  when: not swiftly_bin.stat.exists
+  become: yes
+  block:
+    - name: create swiftly staging directory
+      tempfile:
+        state: directory
+        prefix: swiftly
+      register: swiftly_staging
+
+    - name: download swiftly
+      get_url:
+        url: https://download.swift.org/swiftly/linux/swiftly-{{ ansible_architecture }}.tar.gz
+        dest: "{{ swiftly_staging.path }}/swiftly.tar.gz"
+        mode: 0644
+
+    - name: extract swiftly
+      unarchive:
+        src: "{{ swiftly_staging.path }}/swiftly.tar.gz"
+        dest: "{{ swiftly_staging.path }}"
+        remote_src: yes
+
+    - name: initialize swiftly
+      command: >-
+        {{ swiftly_staging.path }}/swiftly init
+        --assume-yes
+        --no-modify-profile
+        --quiet-shell-followup
+        --skip-install
+      environment: "{{ swiftly_env }}"
+
+  always:
+    - name: remove swiftly staging directory
+      file:
+        path: "{{ swiftly_staging.path }}"
+        state: absent
+      when: swiftly_staging.path is defined
+
+- name: install swift {{ swift_version }}
+  command: >-
+    {{ swiftly_bin_dir }}/swiftly install {{ swift_version }}
+    --assume-yes
+    --post-install-file {{ swiftly_home_dir }}/post-install.sh
+  args:
+    creates: "{{ swiftly_home_dir }}/toolchains/{{ swift_version }}"
+  environment: "{{ swiftly_env }}"
   become: yes
 
-- name: download swift {{ swift_version }}
-  get_url:
-    url: https://download.swift.org/swift-{{ swift_version }}-release/ubuntu2404/swift-{{ swift_version }}-RELEASE/swift-{{ swift_version }}-RELEASE-ubuntu24.04.tar.gz
-    dest: /tmp/swift-{{ swift_version }}-RELEASE-ubuntu24.04.tar.gz
-    mode: 0644
+# swiftly writes out the system packages the toolchain needs (e.g. libxml2-16
+# vs libxml2) rather than installing them itself, and only if any are missing
+- name: install swift system dependencies
+  shell: |
+    if [ -f post-install.sh ]; then
+      bash post-install.sh
+      rm -f post-install.sh
+      echo installed
+    fi
+  args:
+    chdir: "{{ swiftly_home_dir }}"
+  environment:
+    DEBIAN_FRONTEND: noninteractive
+  register: swift_post_install
+  changed_when: "'installed' in swift_post_install.stdout"
   become: yes
 
-- name: extract swift
-  unarchive:
-    src: /tmp/swift-{{ swift_version }}-RELEASE-ubuntu24.04.tar.gz
-    dest: "{{ swift_install_path }}"
-    remote_src: yes
-    creates: "{{ swift_install_path }}/swift-{{ swift_version }}-RELEASE-ubuntu24.04"
+- name: get current swift toolchain
+  command: "{{ swiftly_bin_dir }}/swiftly use"
+  environment: "{{ swiftly_env }}"
+  register: swiftly_current
+  changed_when: false
   become: yes
 
-- name: Configure Swift PATH in profile.d
+- name: set swift {{ swift_version }} as default toolchain
+  command: "{{ swiftly_bin_dir }}/swiftly use --global-default --assume-yes {{ swift_version }}"
+  environment: "{{ swiftly_env }}"
+  when: swift_version not in swiftly_current.stdout
+  become: yes
+
+- name: Configure swiftly environment in profile.d
   template:
     src: swift.sh.j2
     dest: /etc/profile.d/swift.sh
     mode: 0644
   become: yes
 
+# Point straight at the toolchain rather than the swiftly proxies so swift
+# works for non-login shells (e.g. other roles) without SWIFTLY_HOME_DIR set
 - name: Symlink swift and swiftc to /usr/local/bin
   file:
-    src: "{{ swift_bin_path }}/{{ item }}"
+    src: "{{ swift_toolchain_bin_path }}/{{ item }}"
     dest: "/usr/local/bin/{{ item }}"
     state: link
   loop:
