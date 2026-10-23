@@ -7,10 +7,11 @@
   become: yes
 
 - name: build SourceKitten
-  command: swift build -c release
+  command: "{{ swiftly_bin_dir }}/swift build -c release"
   args:
     chdir: /opt/SourceKitten
     creates: /opt/SourceKitten/.build/release/sourcekitten
+  environment: "{{ swiftly_env }}"
   become: yes
 
 - name: create sourcekitten symlink

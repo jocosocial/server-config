@@ -2,6 +2,7 @@
 # Managed by Ansible
 export SWIFTLY_HOME_DIR="{{ swiftly_home_dir }}"
 export SWIFTLY_BIN_DIR="{{ swiftly_bin_dir }}"
+export SWIFTLY_TOOLCHAINS_DIR="{{ swiftly_toolchains_dir }}"
 case ":$PATH:" in
   *":$SWIFTLY_BIN_DIR:"*) ;;
   *) export PATH="$SWIFTLY_BIN_DIR:$PATH" ;;

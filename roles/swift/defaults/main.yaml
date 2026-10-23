@@ -2,7 +2,8 @@
 swift_version: "6.4.1"
 swiftly_home_dir: /opt/swiftly
 swiftly_bin_dir: "{{ swiftly_home_dir }}/bin"
+swiftly_toolchains_dir: "{{ swiftly_home_dir }}/toolchains"
 swiftly_env:
   SWIFTLY_HOME_DIR: "{{ swiftly_home_dir }}"
   SWIFTLY_BIN_DIR: "{{ swiftly_bin_dir }}"
-swift_toolchain_bin_path: "{{ swiftly_home_dir }}/toolchains/{{ swift_version }}/usr/bin"
+  SWIFTLY_TOOLCHAINS_DIR: "{{ swiftly_toolchains_dir }}"

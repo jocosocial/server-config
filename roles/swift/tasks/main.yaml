@@ -26,7 +26,7 @@
 
     - name: download swiftly
       get_url:
-        url: https://download.swift.org/swiftly/linux/swiftly-{{ ansible_architecture }}.tar.gz
+        url: https://download.swift.org/swiftly/linux/swiftly-{{ ansible_facts["architecture"] }}.tar.gz
         dest: "{{ swiftly_staging.path }}/swiftly.tar.gz"
         mode: 0644
 
@@ -58,7 +58,7 @@
     --assume-yes
     --post-install-file {{ swiftly_home_dir }}/post-install.sh
   args:
-    creates: "{{ swiftly_home_dir }}/toolchains/{{ swift_version }}"
+    creates: "{{ swiftly_toolchains_dir }}/{{ swift_version }}"
   environment: "{{ swiftly_env }}"
   become: yes
 
@@ -97,16 +97,4 @@
     src: swift.sh.j2
     dest: /etc/profile.d/swift.sh
     mode: 0644
-  become: yes
-
-# Point straight at the toolchain rather than the swiftly proxies so swift
-# works for non-login shells (e.g. other roles) without SWIFTLY_HOME_DIR set
-- name: Symlink swift and swiftc to /usr/local/bin
-  file:
-    src: "{{ swift_toolchain_bin_path }}/{{ item }}"
-    dest: "/usr/local/bin/{{ item }}"
-    state: link
-  loop:
-    - swift
-    - swiftc
   become: yes
