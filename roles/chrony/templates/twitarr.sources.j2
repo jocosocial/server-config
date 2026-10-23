@@ -1,0 +1,7 @@
+#
+# Managed by Ansible
+#
+# Ship NTP server. Preferred whenever it is reachable (on the ship), otherwise
+# chrony falls back to the Ubuntu NTS pools in ubuntu-ntp-pools.sources. No NTS
+# here since the ship server likely doesn't support it.
+server {{ ntp_server }} iburst prefer

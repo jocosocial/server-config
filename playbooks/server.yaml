@@ -15,6 +15,7 @@
     - sudo
     - dns
     - systemd
+    - chrony
     - python
     - swift
     - sourcekitten

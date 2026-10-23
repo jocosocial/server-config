@@ -11,12 +11,6 @@
     state: restarted
   become: yes
 
-- name: restart timesyncd
-  service:
-    name: systemd-timesyncd
-    state: restarted
-  become: yes
-
 - name: reload systemd
   shell:
     cmd: systemctl daemon-reload

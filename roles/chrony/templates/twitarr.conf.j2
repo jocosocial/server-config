@@ -1,0 +1,7 @@
+#
+# Managed by Ansible
+#
+# The default (mix) won't select an unauthenticated source unless an NTS source
+# is also selectable, which would leave the ship server unused when the ship has
+# no internet. Ignore authentication for selection so "prefer" decides instead.
+authselectmode ignore

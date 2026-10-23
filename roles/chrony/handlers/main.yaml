@@ -1,0 +1,11 @@
+---
+- name: reload chrony sources
+  shell:
+    cmd: chronyc reload sources
+  become: yes
+
+- name: restart chrony
+  service:
+    name: chrony
+    state: restarted
+  become: yes
