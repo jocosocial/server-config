@@ -4,5 +4,5 @@
 - name: change opt ownership
   file:
     path: /opt
-    owner: "{{ ansible_user_id }}"
+    owner: "{{ ansible_facts['user_id'] }}"
   become: yes

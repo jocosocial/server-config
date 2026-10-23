@@ -9,7 +9,7 @@
 - name: dotfiles
   copy:
     src: "{{ item }}"
-    dest: "/home/{{ ansible_user_id }}/.{{ item }}"
+    dest: "/home/{{ ansible_facts['user_id'] }}/.{{ item }}"
   with_items:
     - tmux.conf
     - vimrc

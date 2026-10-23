@@ -1,7 +1,7 @@
 ---
 - name: authorized ssh keys
   authorized_key:
-    user: "{{ ansible_user_id }}"
+    user: "{{ ansible_facts['user_id'] }}"
     key: "{{ item }}"
   with_items:
     - "{{ ssh_authorized_keys }}"

@@ -6,7 +6,7 @@
     groups: "{{ item.groups }}"
   become: yes
   with_items:
-    - user: "{{ ansible_user_id }}"
+    - user: "{{ ansible_facts['user_id'] }}"
       groups: docker,sudo
 
 - name: Reset to enable new groups

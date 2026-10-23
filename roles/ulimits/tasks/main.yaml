@@ -6,5 +6,5 @@
       #
       # Managed by Ansible
       #
-      {{ ansible_user_id }} soft nofile 10000
+      {{ ansible_facts['user_id'] }} soft nofile 10000
   become: yes

@@ -9,7 +9,7 @@
 #network:
 #  version: 2
 #  ethernets:
-#    {{ ansible_default_ipv4.interface }}:
+#    {{ ansible_facts['default_ipv4']['interface'] }}:
 #      dhcp4: no
 #      addresses:
 #        - {{ server_address }}/{{ server_netmask }}
