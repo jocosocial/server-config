@@ -35,11 +35,14 @@
     dest: "{{ twitarr_coredump_dir }}"
     state: link
 
+# Ensure these are up to date with swiftarr's Dockerfile and init-prereqs.sh
 - name: install development dependencies
   package:
     name:
-      - libgd-dev
-      - libjpeg-dev
+      - libvips-dev
+      # libheif's HEIC and AVIF decoders are separate packages as of 26.04
+      - libheif-plugin-libde265
+      - libheif-plugin-dav1d
     state: present
   become: yes
 
@@ -114,7 +117,7 @@
   with_items:
     - repo: docker.io/library
       name: swift
-      tag: 6.4-noble
+      tag: 6.4-resolute
     - repo: docker.io/library
       name: ubuntu
-      tag: 24.04
+      tag: 26.04

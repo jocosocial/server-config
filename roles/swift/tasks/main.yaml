@@ -62,6 +62,23 @@
   environment: "{{ swiftly_env }}"
   become: yes
 
+# swiftly skips the install if its config already lists the version, even
+# when the toolchain files are somewhere else
+- name: check swift {{ swift_version }} toolchain is present
+  stat:
+    path: "{{ swiftly_toolchains_dir }}/{{ swift_version }}/usr/bin/swift"
+  register: swift_toolchain_bin
+  become: yes
+
+- name: verify swift {{ swift_version }} toolchain location
+  assert:
+    that: swift_toolchain_bin.stat.exists
+    fail_msg: >-
+      swiftly reports {{ swift_version }} as installed but it is not in
+      {{ swiftly_toolchains_dir }}. Remove {{ swiftly_home_dir }} (and any
+      ~/.local/share/swiftly) and rerun.
+    quiet: true
+
 # swiftly writes out the system packages the toolchain needs (e.g. libxml2-16
 # vs libxml2) rather than installing them itself, and only if any are missing
 - name: install swift system dependencies
