@@ -5,6 +5,8 @@ twitarr_logs_dir: "{{ twitarr_root_dir }}/logs"
 twitarr_src_dir: "{{ twitarr_root_dir }}/src"
 twitarr_deploy_dir: "{{ twitarr_root_dir }}/deploy"
 twitarr_backups_dir: "{{ twitarr_root_dir }}/backups"
+# uid/gid of the postgres user inside the pgbackups container image
+twitarr_pgbackups_uid: 999
 twitarr_coredump_dir: "{{ twitarr_root_dir }}/coredump"
 twitarr_microkaraoke_dir: "{{ twitarr_root_dir }}/microkaraoke"
 

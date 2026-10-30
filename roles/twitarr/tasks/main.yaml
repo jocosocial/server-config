@@ -8,12 +8,42 @@
   become: yes
   with_items:
     - "{{ twitarr_root_dir }}"
-    - "{{ twitarr_backups_dir }}"
+
+# Backups must not be world readable. The backup tools create files with a
+# permissive umask, so access is restricted at the directory level instead.
+- name: create backup directories
+  file:
+    path: "{{ item }}"
+    owner: "{{ ansible_facts['user_id'] }}"
+    group: "{{ ansible_facts['user_id'] }}"
+    mode: 0700
+    state: directory
+  become: yes
+  with_items:
     - "{{ twitarr_backups_dir }}/images"
-    - "{{ twitarr_backups_dir }}/database"
     - "{{ twitarr_backups_dir }}/buildcache"
     - "{{ twitarr_backups_dir }}/redis"
     - "{{ twitarr_backups_dir }}/prometheus"
+
+- name: create backups directory
+  file:
+    path: "{{ twitarr_backups_dir }}"
+    owner: "{{ ansible_facts['user_id'] }}"
+    group: "{{ ansible_facts['user_id'] }}"
+    mode: 0750
+    state: directory
+  become: yes
+
+# The pgbackups container runs as its image's postgres user, not root. The
+# group stays the admin user's so it can read the dumps.
+- name: create database backups directory
+  file:
+    path: "{{ twitarr_backups_dir }}/database"
+    owner: "{{ twitarr_pgbackups_uid }}"
+    group: "{{ ansible_facts['user_id'] }}"
+    mode: 0750
+    state: directory
+  become: yes
 
 - name: create log directory
   file:
