@@ -136,6 +136,7 @@
     - alertmanager
     - grafana
     - senddata
+    - dockhand
 
 # Ensure these are up to date with swiftarr's Dockerfile
 - name: pull build images
