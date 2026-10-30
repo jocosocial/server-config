@@ -5,3 +5,10 @@
     value: "1 4 1 7"
     sysctl_file: /etc/sysctl.d/10-console-messages.conf
   become: yes
+
+- name: Enable memory overcommit (required by Redis background saves)
+  sysctl:
+    name: vm.overcommit_memory
+    value: "1"
+    sysctl_file: /etc/sysctl.d/20-redis.conf
+  become: yes
