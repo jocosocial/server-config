@@ -25,5 +25,7 @@
       - unzip          # Archive extractor
       - tmux           # Terminal multiplexer
       - apparmor-utils # AppArmor utilities
+      - certbot        # Let's Encrypt client
+      - python3-certbot-dns-cloudflare # Certbot DNS-01 plugin for Cloudflare
     state: present
   become: yes
